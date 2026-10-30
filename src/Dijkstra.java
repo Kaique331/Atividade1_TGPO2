@@ -3,17 +3,23 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class Dijkstra {
+    int[] distancia;
+    Integer[] predecessor;
+    boolean[] visitado;
+    Graph grafo;
 
-    public Dijkstra(){}
-
-    public void dijkstra(Graph grafo, int origem){
-        int[] distancia = new int[grafo.getVertices()];
-        Integer[] predecessor = new Integer[grafo.getVertices()];
-        boolean[] visitado = new boolean[grafo.getVertices()];
+    public Dijkstra(Graph grafo){
+        distancia = new int[grafo.getVertices()];
+        predecessor = new Integer[grafo.getVertices()];
+        visitado = new boolean[grafo.getVertices()];
+        this.grafo = grafo;
 
         Arrays.fill(distancia, Integer.MAX_VALUE);
         Arrays.fill(predecessor, null);
         Arrays.fill(visitado, false);
+    }
+
+    public void dijkstra(int origem){
         distancia[origem] = 0;
 
         Comparator<EstadoFila> comparador = Comparator.comparingLong(e -> e.distancia);
@@ -42,6 +48,24 @@ public class Dijkstra {
             }
         }
 
-        System.out.println();
+        System.out.println("custo total do caminho: " + distancia[distancia.length-1] + ";");
+    }
+
+    public void reconstruir_caminho(){
+        System.out.println("caminho do grafo: ");
+
+        Integer[] caminho = new Integer[predecessor.length];
+        int pos = predecessor.length-1, temp = 0;
+
+        while(predecessor[pos] != null){
+            caminho[temp] = pos;
+            pos = predecessor[pos];
+        }
+
+        for (int i = caminho.length-1; i > 0; i--) {
+            System.out.print(caminho[i] + " -> ");
+        }
+        System.out.println(";");
+
     }
 }

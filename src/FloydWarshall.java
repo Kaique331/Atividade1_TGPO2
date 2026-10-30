@@ -1,11 +1,15 @@
 public class FloydWarshall {
+    public final int inf = 999999999;
+    int[][] distancia, next;
+    Graph grafo;
 
-    public FloydWarshall(){}
+    public FloydWarshall(Graph grafo){
+        this.grafo = grafo;
+        this.distancia = grafo.getCustos().clone();
+        this.next = new int[grafo.getVertices()][grafo.getVertices()];
+    }
 
-    public void floydwarshall(int[][] custos, Graph grafo){
-        int inf = 999999999;
-        int[][] distancia = custos.clone();
-        int[][] next = new int[grafo.getVertices()][grafo.getVertices()];
+    public void floydwarshall(){
         for(Edge aresta: grafo.getEdges()){
             next[aresta.from][aresta.to] = aresta.to;
         }

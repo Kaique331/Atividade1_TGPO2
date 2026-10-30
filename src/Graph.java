@@ -6,7 +6,9 @@ public class Graph {
     private final int vertices;
     private int[][] custos;
     private final List<Edge> edges = new ArrayList<>();
-    Graph(int vertices) {
+    private final String[] descricao;
+
+    Graph(int vertices, String[] descricao) {
         this.vertices = vertices;
         this.custos = new int[vertices][vertices];
         for (int i = 0; i < vertices-1; i++) {
@@ -14,6 +16,8 @@ public class Graph {
                 custos[i][j] = 999999999;
             }
         }
+        this.descricao = descricao;
+
     }
     void addEdge(int from, int to, int weight) {
         edges.add(new Edge(from, to, weight));
@@ -44,4 +48,13 @@ public class Graph {
     public int[][] getCustos() {
         return custos;
     }
+
+    public String[] getDescricao() {
+        return descricao;
+    }
+
+    public String descricao_vertice(int posicao){
+        return descricao[posicao];
+    }
+
 }

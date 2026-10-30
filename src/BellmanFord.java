@@ -1,15 +1,20 @@
 import java.util.Arrays;
 
 public class BellmanFord {
+    public final int inf = 999999999;
+    int[] distancia;
+    Integer[] predecessor;
+    Graph grafo;
 
-    public BellmanFord(){}
+    public BellmanFord(Graph grafo){
+        this.grafo = grafo;
+        this.distancia = new int[grafo.getVertices()];
+        this.predecessor = new Integer[grafo.getVertices()];
+        Arrays.fill(distancia, inf);
+        Arrays.fill(predecessor, null);}
 
     public void bellmanford(Graph grafo, int inicio){
-        int inf = 999999999;
-        int[] distancia = new int[grafo.getVertices()];
-        Integer[] predecessor = new Integer[grafo.getVertices()];
-        Arrays.fill(distancia, inf);
-        Arrays.fill(predecessor, null);
+
         distancia[inicio] = 0;
 
         for (int i = 1; i < distancia.length-1; i++) {
@@ -32,6 +37,24 @@ public class BellmanFord {
             }
 
         }
-        
+
+        int total = 0, pos = predecessor.length-1;
+        while(predecessor[pos] != null){
+            total += distancia[pos];
+            pos = predecessor[pos];
+        }
+
+        System.out.println("Total do caminho: " + total);
+
+    }
+
+    public void reconstruir_caminho(){
+        System.out.println("caminho do grafo: ");
+
+        for (int i = 0; i < predecessor.length-1; i++) {
+            System.out.print(grafo.descricao_vertice(predecessor[i]) + " -> ");
+        }
+        System.out.println(";");
+
     }
 }
