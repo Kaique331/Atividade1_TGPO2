@@ -44,7 +44,10 @@ public class BellmanFord {
             pos = predecessor[pos];
         }
 
+        System.out.println("inicio: " + grafo.descricao_vertice(inicio));
+        System.out.println("destino: " + grafo.descricao_vertice(grafo.getVertices-1));
         System.out.println("Total do caminho: " + total);
+        reconstruir_caminho();
 
     }
 
