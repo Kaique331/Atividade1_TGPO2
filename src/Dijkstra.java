@@ -48,7 +48,10 @@ public class Dijkstra {
             }
         }
 
+        System.out.println("origem: " + grafo.descricao_vertice(origem));
+        System.out.println("destino: " + grafo.descricao_vertice(grafo.getVertices());
         System.out.println("custo total do caminho: " + distancia[distancia.length-1] + ";");
+        reconstruir_caminho();
     }
 
     public void reconstruir_caminho(){
