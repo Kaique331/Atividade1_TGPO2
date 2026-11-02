@@ -20,6 +20,13 @@ public class Dijkstra {
     }
 
     public void dijkstra(int origem){
+        for(Edge reta: grafo.getEdges){
+            if(reta.getWeight < 0){
+                System.out.println("possui valor negativo, não pode ser usado");
+                System.out(0);
+            }
+        }
+        
         distancia[origem] = 0;
 
         Comparator<EstadoFila> comparador = Comparator.comparingLong(e -> e.distancia);
