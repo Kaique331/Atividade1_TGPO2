@@ -66,7 +66,7 @@ public class Dijkstra {
         }
 
         for (int i = caminho.length-1; i > 0; i--) {
-            System.out.print(caminho[i] + " -> ");
+            System.out.print(grafo.descricao_vertice(caminho[i]) + " -> ");
         }
         System.out.println(";");
 
